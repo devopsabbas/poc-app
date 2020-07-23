@@ -18,7 +18,8 @@ spec:
         app: poc-app
     spec:
       containers:
-      - image: 165272256061.dkr.ecr.us-east-1.amazonaws.com/poc-app:v${BUILD_NUMBER}
         name: poc-app
+        image: dockerabbaas/poc-app:{{BUILD_NUMBER}}
+        imagePullPolicy: Always
         ports:
         - containerPort: 80
