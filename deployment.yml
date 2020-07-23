@@ -18,7 +18,7 @@ spec:
         app: poc-app
     spec:
       containers:
-      - image: 165272256061.dkr.ecr.us-east-1.amazonaws.com/poc-app
+      - image: 165272256061.dkr.ecr.us-east-1.amazonaws.com/poc-app:7
         name: poc-app
         ports:
         - containerPort: 80
