@@ -1,12 +1,13 @@
+kind: Service
 apiVersion: v1
-kind: Pod
 metadata:
   name: nodeapp
-  labels:
-    app: nodeapp
 spec:
-  containers:
-    - name: nodeapp
-      image: dockerabbaas/node-app:{{BUILD_NUMBER}}
-      ports:
-        - containerPort: 8080
+  selector:
+    app: nodeapp
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8080
+    nodePort: 30000
+  type: LoadBalancer
