@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pocapp
+  labels:
+    app: pocapp
+spec:
+  containers:
+    - name: pocapp
+      image: dockerabbaas/poc:{{BUILD_NUMBER}}
+      ports:
+        - containerPort: 80
