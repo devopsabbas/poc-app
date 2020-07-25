@@ -1,25 +1,12 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: v1
+kind: Pod
 metadata:
-  name: poc-app
+  name: nodeapp
+  labels:
+    app: nodeapp
 spec:
-  replicas: 2
-  strategy:
-    type: RollingUpdate
-    rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
-  selector:
-    matchLabels:
-      app: poc-app
-  template:
-    metadata:
-      labels:
-        app: poc-app
-    spec:
-      containers:
-        name: poc-app
-        image: dockerabbaas/poc-app:{{BUILD_NUMBER}}
-        imagePullPolicy: Always
-        ports:
-        - containerPort: 80
+  containers:
+    - name: nodeapp
+      image: dockerabbaas/node-app:{{BUILD_NUMBER}}
+      ports:
+        - containerPort: 8080
