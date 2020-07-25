@@ -23,7 +23,7 @@ pipeline {
       steps {
           withKubeConfig([credentialsId: 'k8s-api-token', serverUrl: 'https://api.smkbservice.tk']) {
           sh 'cat deploy.yml | sed "s/{{BUILD_NUMBER}}/$BUILD_NUMBER/g"| kubectl apply -f -'
-          sh 'kubectl apply -f service.yaml'
+          sh 'kubectl apply -f service.yml'
         }
       }
   }
