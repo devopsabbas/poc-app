@@ -1,13 +1,12 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: nodeapp
+  name: pocapp
 spec:
   selector:
-    app: nodeapp
+    app: pocapp
   ports:
   - protocol: TCP
     port: 80
     targetPort: 80
-    nodePort: 30000
   type: LoadBalancer
