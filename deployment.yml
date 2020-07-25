@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         name: poc-app
-        image: dockerabbaas/poc-app:{{BUILD_NUMBER}}
+        image: dockerabbaas/poc-app:15
         imagePullPolicy: Always
         ports:
         - containerPort: 80
