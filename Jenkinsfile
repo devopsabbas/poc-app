@@ -3,20 +3,20 @@ pipeline {
   stages {
     stage('Docker Build') {
       steps {
-        sh "docker build -t dockerabbaas/poc-app:${env.BUILD_NUMBER} ."
+        sh "docker build -t dockerabbaas/node-app:${env.BUILD_NUMBER} ."
       }
     }
     stage('Docker Push') {
       steps {
         withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
           sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
-          sh "docker push dockerabbaas/poc-app:${env.BUILD_NUMBER}"
+          sh "docker push dockerabbaas/node-app:${env.BUILD_NUMBER}"
         }
       }
     }
     stage('Docker Remove Image') {
       steps {
-        sh "docker rmi dockerabbaas/poc-app:${env.BUILD_NUMBER}"
+        sh "docker rmi dockerabbaas/node-app:${env.BUILD_NUMBER}"
       }
     }
     stage('Deploy To Kubernetes') {
