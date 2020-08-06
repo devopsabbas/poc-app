@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: ingress-my
+  annotations:
+    # use the shared ingress-nginx
+    kubernetes.io/ingress.class: "nginx"
+spec:
+  rules:
+  - host: test.smkbservice.tk
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: pocapp
+          servicePort: 80
